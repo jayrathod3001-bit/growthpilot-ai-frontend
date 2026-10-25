@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../utils/apiConfig';
 
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
-const BACKEND_URL = 'http://localhost:5000';
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '309679085647-ip7l9nj5f6atjm6jsn3a74km7cuaib4s.apps.googleusercontent.com';
+const BACKEND_URL = API_BASE_URL;
 
 export const GoogleAuthButton = ({ onSuccess, onError, text = 'Sign in with Google' }) => {
   const [loading, setLoading] = useState(false);

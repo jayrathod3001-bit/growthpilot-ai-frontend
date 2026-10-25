@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_BASE_URL } from '../utils/apiConfig';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
-const API = 'http://localhost:5000/api/admin';
+const API = `${API_BASE_URL}/api/admin`;
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 const authHeaders = (token) => ({

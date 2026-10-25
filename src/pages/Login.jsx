@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { GoogleAuthButton } from '../components/SocialAndMobileAuth';
+import { API_BASE_URL } from '../utils/apiConfig';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ const Login = () => {
   const handleAuthSuccess = async (token) => {
     localStorage.setItem('token', token);
     try {
-      const bizRes = await axios.get('http://localhost:5000/api/get-my-businesses', {
+      const bizRes = await axios.get(`${API_BASE_URL}/api/get-my-businesses`, {
         headers: { Authorization: 'Bearer ' + token },
       });
       if (bizRes.data.status === 1 && bizRes.data.data.length > 0) {
@@ -65,7 +66,7 @@ const Login = () => {
     setSubmitting(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/login', formData);
+      const response = await axios.post(`${API_BASE_URL}/api/login`, formData);
       if (response.data.status === 1) {
         await handleAuthSuccess(response.data.token);
       } else {

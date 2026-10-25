@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_BASE_URL } from '../utils/apiConfig';
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const AdminLogin = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/admin/login', form, {
+      const res = await axios.post(`${API_BASE_URL}/api/admin/login`, form, {
         headers: { 'Content-Type': 'application/json' },
       });
       if (res.data.status === 1) {
